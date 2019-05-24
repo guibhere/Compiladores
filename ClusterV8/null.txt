@@ -1,0 +1,36 @@
+init
+
+@programa = in(arq.abrir($programa_teste.py$))
+@rf = $ $
+repeat(@i,0,10,1){
+
+
+se(@i==0)&&(#(id0)){
+interrupt
+>>>id0
+
+}
+
+sen{
+       se(#(id[@i])){
+	>>>id[@i]
+	id0 -> @programa,id[@i]
+	id0 <- @reposta,id[@i]
+	@rf = @rf + @resposta
+	id[@i]<<<}
+      sen{
+	out($Nó Ocupado$)
+	
+	}}
+	
+
+
+
+
+}
+
+
+
+
+
+finit

@@ -1,0 +1,219 @@
+    // JavaCUP 
+
+package AnaliseSintatica;
+
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+
+parser code
+{:
+    private Symbol s;  
+    
+    public void syntax_error(Symbol s){
+        this.s = s; 
+        report_error("Erro sintático - Linha: " +(s.right + 1) + " - Coluna: " + s.left + " - Token: \"" + s.value + "\"\n", null);     
+    }
+
+    public Symbol getS(){
+        return this.s;
+    }
+:};
+
+
+terminal	IF,ID, ELSE, AP, FP, AC,ACH,FCH,STRING,NUM, FC, ATR, OP, COMP, VAR,SEND,RECEIVE;
+terminal	WHILE, RD, WR, PTV, END, START, STOP, SUB,BUSY;
+terminal	BEGIN, OPLOG,SEPARADOR,FOR,FILE,COMENT,ELIF,BREAK;
+
+non terminal Inicio_Programa,Conteudo,Condicao,Condicao_sen,Conteudo_Condicao,Variavel,Comparacao,Valor;
+non terminal Conteudo_Switch;
+non terminal Definicao_Funcao,Param,Chamada_Funcao;
+non terminal Conteudo_for,For,Enquanto,Quebrar;
+non terminal Print,Conteudo_Sub,Conteudo_Sub_Se,Conteudo_Sub_Loop;
+non terminal Envio;
+non terminal Comentarios,Interromper;
+non terminal Expressao_Aritmetica;
+non terminal Operacao,Fimlinha,Receber,Parenteses,Nos;
+non terminal Ocupado,Ligar,Desligar;
+non terminal Ler,Escrever,Arquivo,Comp,Condicao_sepa;
+
+precedence left AP,FP,OP,OPLOG,ELIF,ELSE,BREAK;
+
+start with Inicio_Programa;
+
+Inicio_Programa ::= BEGIN END
+           | BEGIN Conteudo END;
+
+// Tudo que pode ser implementado dentro do algoritmo 
+
+Conteudo ::= Variavel 
+            | For 
+            | Definicao_Funcao 
+            | Chamada_Funcao
+            | Condicao
+            | Print
+            | Expressao_Aritmetica
+            | Envio
+            | Comentarios
+            | Operacao
+            | Fimlinha
+            | Receber
+            | Parenteses
+            | Nos
+            | Ocupado
+            | Ligar 
+            | Desligar
+            | Ler
+            | Escrever
+            | Arquivo
+            | Enquanto
+            | Condicao_sepa
+            | Condicao_sen;
+
+Conteudo_Sub_Loop ::= 
+            Variavel 
+            | For 
+            | Condicao
+            | Print
+            | Expressao_Aritmetica
+            | Envio
+            | Comentarios
+            | Operacao
+            | Fimlinha
+            | Receber
+            | Parenteses
+            | Nos
+            | Ocupado
+            | Ligar 
+            | Desligar
+            | Ler
+            | Escrever
+            | Arquivo
+            | Enquanto
+            | Condicao_sepa
+            | Condicao_sen
+            | Interromper;
+            
+Conteudo_Sub_Se ::= 
+            Variavel 
+            | For 
+            | Definicao_Funcao 
+            | Chamada_Funcao
+            | Condicao
+            | Condicao_sen
+            | Print
+            | Expressao_Aritmetica
+            | Envio
+            | Comentarios
+            | Operacao
+            | Fimlinha
+            | Receber
+            | Parenteses
+            | Nos
+            | Ocupado
+            | Ligar 
+            | Desligar
+            | Ler
+            | Escrever
+            | Arquivo
+            | Condicao_sepa
+            | Enquanto
+            |Interromper;
+
+Ler ::= VAR ATR RD AP Valor FP  
+        VAR ATR RD AP Valor FP  Conteudo
+        |VAR ATR RD AP Arquivo FP 
+        |VAR ATR RD AP Arquivo FP  Conteudo;
+
+Escrever ::= WR AP Valor FP 
+            |WR AP Arquivo FP 
+            | WR AP Arquivo FP  Conteudo
+            | WR AP Valor FP Conteudo;
+
+Arquivo ::= FILE AP Valor FP
+            |FILE AP Valor FP Conteudo;
+            
+
+Parenteses ::= AP Conteudo FP
+               |  AP Conteudo FP Conteudo;
+
+
+
+Condicao ::= IF Comparacao   ACH Conteudo_Sub_Se FCH
+             |IF  Comparacao  ACH Conteudo_Sub_Se FCH Conteudo;
+
+
+
+Condicao_sepa ::=  Condicao ELIF Comparacao   ACH Conteudo_Sub_Se FCH 
+                    |Condicao_sepa ELIF Comparacao ACH Conteudo_Sub_Se FCH;
+
+                   
+                  
+
+Condicao_sen ::=  Condicao_sepa ELSE   ACH Conteudo_Sub_Se FCH 
+                |Condicao ELSE    ACH Conteudo_Sub_Se FCH 
+                 |Condicao_sepa ELSE   ACH Conteudo_Sub_Se FCH Conteudo 
+                |Condicao ELSE    ACH Conteudo_Sub_Se FCH Conteudo;
+
+                  
+Comparacao ::=  Comparacao OPLOG Comparacao 
+                |AP Comparacao FP
+                |Comp;
+
+Comp ::= Valor COMP Valor
+        |Ocupado;
+Interromper ::= Conteudo_Sub_Se BREAK
+                |Conteudo_Sub_Se BREAK Conteudo_Sub_Se;
+               
+Ocupado ::= BUSY AP Nos FP
+            |  BUSY AP Nos FP Conteudo;
+              
+For ::= FOR AP VAR SEPARADOR NUM SEPARADOR NUM SEPARADOR NUM FP ACH Conteudo_Sub_Loop FCH
+        |FOR AP VAR SEPARADOR NUM SEPARADOR NUM SEPARADOR NUM FP ACH Conteudo_Sub_Loop FCH Conteudo;
+
+Enquanto ::= WHILE AP Comparacao FP ACH Conteudo_Sub_Loop FCH
+          |WHILE AP Comparacao FP ACH Conteudo_Sub_Loop  FCH Conteudo;
+
+
+
+Valor ::= NUM 
+        | STRING
+        | VAR;
+        
+
+Nos ::= ID AC Valor FC
+       |ID;
+       
+Ligar ::= START Nos 
+          |START Nos Conteudo;
+
+Desligar ::= Nos STOP
+            | Nos STOP Conteudo;
+
+Fimlinha ::= PTV;
+
+Envio ::= 
+        Nos SEND VAR SEPARADOR Nos
+        | Nos SEND VAR SEPARADOR Nos Conteudo;
+
+         
+
+Receber ::= 
+        Nos RECEIVE VAR SEPARADOR Nos
+        | Nos RECEIVE VAR SEPARADOR Nos Conteudo;
+   
+
+
+
+Operacao ::=  Operacao OP Operacao
+              |AP Operacao FP
+              |Valor;
+              
+          
+
+
+Expressao_Aritmetica ::= 
+            VAR ATR  Operacao 
+          | VAR ATR Operacao  Conteudo;
+          
+          

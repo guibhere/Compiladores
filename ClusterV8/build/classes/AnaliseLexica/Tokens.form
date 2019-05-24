@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="375" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="275" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable1">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="3" rowCount="31">
+                <Column editable="true" title="Token" type="java.lang.String">
+                  <Data value="IF"/>
+                  <Data value="ELIF"/>
+                  <Data value="ELSE"/>
+                  <Data value="AP"/>
+                  <Data value="FP"/>
+                  <Data value="AC"/>
+                  <Data value="FC"/>
+                  <Data value="ACH"/>
+                  <Data value="FCH"/>
+                  <Data value="OP"/>
+                  <Data value="ATR"/>
+                  <Data value="COMP"/>
+                  <Data value="OPLOG"/>
+                  <Data value="WHILE"/>
+                  <Data value="FOR"/>
+                  <Data value="RD"/>
+                  <Data value="WR"/>
+                  <Data value="BEGIN"/>
+                  <Data value="END"/>
+                  <Data value="START"/>
+                  <Data value="STOP"/>
+                  <Data value="FILE"/>
+                  <Data value="VAR"/>
+                  <Data value="STRING"/>
+                  <Data value="NUM"/>
+                  <Data value="SEND"/>
+                  <Data value="RECEIVE"/>
+                  <Data value="BUSY"/>
+                  <Data value="SEPARADOR"/>
+                  <Data value="ID"/>
+                  <Data value="BREAK"/>
+                </Column>
+                <Column editable="true" title="Lexema" type="java.lang.String">
+                  <Data value="se"/>
+                  <Data value="sepa"/>
+                  <Data value="sen"/>
+                  <Data value="("/>
+                  <Data value=")"/>
+                  <Data value="["/>
+                  <Data value="]"/>
+                  <Data value="{"/>
+                  <Data value="}"/>
+                  <Data value="&apos;+&apos;,&apos;-&apos;,&apos;*&apos;,&apos;/&apos;,&apos;^&apos;"/>
+                  <Data value="&apos;=&apos;"/>
+                  <Data value="&apos;&gt;&apos;,&apos;&lt;&apos;,&apos;&gt;=&apos;,&apos;&lt;=&apos;,&apos;==&apos;,&apos;!&apos;"/>
+                  <Data value="&apos;&amp;&amp;&apos;,&apos;||&apos;"/>
+                  <Data value="WHILE"/>
+                  <Data value="repeat"/>
+                  <Data value="in"/>
+                  <Data value="out"/>
+                  <Data value="init"/>
+                  <Data value="finit"/>
+                  <Data value="&gt;&gt;&gt;"/>
+                  <Data value="&lt;&lt;&lt;"/>
+                  <Data value="&quot;arq.abrir&quot;, &quot;arq.fechar&quot;, &quot;arq.gravar&quot;"/>
+                  <Data value="&quot;@a&quot;,&quot;@var1&quot;"/>
+                  <Data value="&quot;$ Aqui tem uma String $&quot;"/>
+                  <Data value="&quot;45614614&quot;, &quot;123&quot;"/>
+                  <Data value="-&gt;"/>
+                  <Data value="&lt;-"/>
+                  <Data value="#"/>
+                  <Data value=","/>
+                  <Data value="&quot;id1&quot;, &quot;id[@x]&quot;"/>
+                  <Data value="&quot;interrupt&quot;"/>
+                </Column>
+                <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.String">
+                  <Data value="Condicional Principal"/>
+                  <Data value="Condicional Secundario"/>
+                  <Data value="Condicional Negativo"/>
+                  <Data value="Abre Parenteses"/>
+                  <Data value="Fecha Parenteses"/>
+                  <Data value="Abre Colchetes"/>
+                  <Data value="Fecha Colchetes"/>
+                  <Data value="Abre Chaves"/>
+                  <Data value="Fecha Chaves"/>
+                  <Data value="Operadores Aritimeticos"/>
+                  <Data value="Atribui&#xe7;&#xe3;o"/>
+                  <Data value="Comparadores"/>
+                  <Data value="Operadores Logicos"/>
+                  <Data value="Estrutura de repeti&#xe7;&#xe3;o Condicional"/>
+                  <Data value="Estrutura de repeti&#xe7;&#xe3;o "/>
+                  <Data value="Leitor de entrada"/>
+                  <Data value="Fun&#xe7;&#xe3;o de Saida"/>
+                  <Data value="Inicio do Programa"/>
+                  <Data value="Fim do Programa"/>
+                  <Data value="Inicia N&#xf3;"/>
+                  <Data value="Desliga N&#xf3;"/>
+                  <Data value="Opera&#xe7;&#xf5;es com Arquivos"/>
+                  <Data value="Variaveis"/>
+                  <Data value="Nota&#xe7;&#xe3;o de String"/>
+                  <Data value="Numeros"/>
+                  <Data value="Envia conteudo para um n&#xf3;"/>
+                  <Data value="Recebe conteudo de um n&#xf3;"/>
+                  <Data value="Verifica disponibilidade de um n&#xf3;"/>
+                  <Data value="Separa Argumentos e Parametros de certas Fun&#xe7;&#xf5;es"/>
+                  <Data value="Indentificador de n&#xf3;s"/>
+                  <Data value="Interrompe Subrotina"/>
+                </Column>
+              </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
